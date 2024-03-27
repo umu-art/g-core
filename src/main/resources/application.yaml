@@ -1,0 +1,25 @@
+springdoc:
+  swagger-ui:
+    path: '/backend/g-core/swagger-ui.html'
+  api-docs:
+    path: '/backend/g-core/v3/api-docs'
+
+spring:
+  devtools:
+    add-properties: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+  metrics:
+    tags:
+      application: g-core
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+server:
+  port: 1210
