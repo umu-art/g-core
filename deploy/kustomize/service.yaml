@@ -7,6 +7,6 @@ spec:
     app: g-core
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 1210
+      port: 1210
+      targetPort: 80
   type: NodePort
