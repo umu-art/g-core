@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: g-core
+  labels:
+    app: g-core
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: g-core
+  template:
+    metadata:
+      name: g-core
+      labels:
+        app: g-core
+    spec:
+      containers:
+        - name: g-core
+          image: vikazeni/g-core:latest
+          imagePullPolicy: Always
+      restartPolicy: Always
+      

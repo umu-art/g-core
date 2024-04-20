@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: g-core
+spec:
+  selector:
+    app: g-core
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 1210
+  type: NodePort

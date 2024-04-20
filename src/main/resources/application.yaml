@@ -1,25 +1,38 @@
-springdoc:
-  swagger-ui:
-    path: '/backend/g-core/swagger-ui.html'
-  api-docs:
-    path: '/backend/g-core/v3/api-docs'
-
 spring:
-  devtools:
-    add-properties: false
+  application:
+    name: g-core
+  output.ansi.enabled: ALWAYS
 
 management:
   endpoints:
     web:
       exposure:
-        include: health,prometheus
-  metrics:
-    tags:
-      application: g-core
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      show-details: always
   prometheus:
     metrics:
       export:
         enabled: true
+  tracing:
+    sampling:
+      probability: 1.0
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  zipkin:
+    tracing:
+      endpoint: http://tempo:9411/api/v2/spans
+
+logging:
+  level:
+    root: info
 
 server:
   port: 1210
